@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": ".tmp/tests",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "ES2019",
+    "jsx": "react-jsx",
+    "types": ["node"],
+    "rootDir": "."
+  },
+  "include": [
+    "src/types/**/*.d.ts",
+    "tests/**/*.ts",
+    "src/lib/validation/**/*.ts",
+    "src/lib/auth/**/*.ts",
+    "src/lib/repositories/**/*.ts",
+    "src/lib/booking/**/*.ts",
+    "src/lib/recommendations/**/*.ts",
+    "src/lib/admin/earningsReport.ts",
+    "src/lib/stripe/fees.ts",
+    "src/app/api/provider/spaces/**/*.ts"
+  ]
+}
+
