@@ -27,7 +27,7 @@ export function useCreateBooking() {
   });
 }
 
-export function useConsumerBookings(enabled: boolean) {
+export function useConsumerBookings(enabled = true) {
   return useQuery({
     queryKey: CONSUMER_BOOKINGS_KEY,
     queryFn: async () => {

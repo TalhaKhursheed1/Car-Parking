@@ -9,6 +9,7 @@ import {
   Receipt,
   Wallet,
   XCircle,
+  AlertCircle,
 } from 'lucide-react';
 
 import { AuthGuard } from '@/components/AuthGuard';

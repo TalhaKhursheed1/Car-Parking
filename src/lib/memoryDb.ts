@@ -1,4 +1,4 @@
-import { ObjectId } from "mongodb";
+import { ObjectId, type Document } from "mongodb";
 
 type Doc = Record<string, unknown> & { _id?: ObjectId };
 
@@ -218,7 +218,7 @@ class MemoryCollection {
 }
 
 export class MemoryDb {
-  collection<T = Doc>(name: string) {
+  collection<T extends Document = Doc>(name: string) {
     return new MemoryCollection(name) as unknown as import("mongodb").Collection<T>;
   }
 }

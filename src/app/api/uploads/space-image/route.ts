@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Readable } from 'stream';
 
-import { cloudinary } from '@/lib/cloudinary';
+import { cloudinary, ensureCloudinaryConfigured } from '@/lib/cloudinary';
 import { getSessionFromRequest } from '@/lib/auth/session';
 
 const MAX_FILE_SIZE_MB = 5;
@@ -36,6 +36,7 @@ export async function POST(request: Request) {
   }
 
   try {
+    ensureCloudinaryConfigured();
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 

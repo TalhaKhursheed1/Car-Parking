@@ -67,7 +67,15 @@ export async function GET(request: Request) {
 
   try {
     const spaces = await listSpacesForRatingReview(filters);
-    const ranked = rankSpacesByRating(spaces, rankOptions).slice(0, limit);
+    const ranked = rankSpacesByRating(
+      spaces.map((space) => ({
+        ...space,
+        id: space._id.toString(),
+        ratingAverage: space.ratingAverage ?? 0,
+        ratingCount: space.ratingCount ?? 0,
+      })),
+      rankOptions,
+    ).slice(0, limit);
 
     const providerIds = [
       ...new Set(ranked.map(({ space }) => space.providerId.toString())),
